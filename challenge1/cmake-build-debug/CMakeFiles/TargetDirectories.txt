@@ -1,0 +1,3 @@
+C:/Users/Ema/Documents/CLion_Projects/challenge1/cmake-build-debug/CMakeFiles/chellenge1.dir
+C:/Users/Ema/Documents/CLion_Projects/challenge1/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Ema/Documents/CLion_Projects/challenge1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

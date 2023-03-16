@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Ema/Documents/CLion_Projects/challenge1/ODEsolver.h
+vector
+-
+functional
+-
+
+C:/Users/Ema/Documents/CLion_Projects/challenge1/main.cpp
+iostream
+-
+cmath
+-
+vector
+-
+functional
+-
+fstream
+-
+ODEsolver.h
+C:/Users/Ema/Documents/CLion_Projects/challenge1/ODEsolver.h
+
