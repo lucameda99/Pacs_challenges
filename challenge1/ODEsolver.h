@@ -23,11 +23,13 @@ private:
 public:
     // Constructor
     ODEsolver(
-            std::function<double(double,double)> f
-            , std::function<double(double, double)> fprime
-            , double y0
-            , double T
-            , int N);
+            const std::function<double(double,double)> &f
+            , const std::function<double(double, double)> &fprime
+            , const double y0
+            , const double T
+            , const int N);
+
+    //fprime diventa inutile se usiamo la derivata di Derivatives
 
     // Solve method
     void solveCN(void);

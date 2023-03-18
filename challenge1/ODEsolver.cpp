@@ -3,10 +3,12 @@
 //
 
 #include "ODEsolver.h"
-#include "newton.hpp"
+//#include "newton.hpp"
+#include "Derivatives.hpp"
+#include "basicZeroFun.hpp"
 
-ODEsolver::ODEsolver(std::function<double(double, double)> f
-                     , std::function<double(double, double)> f_prime
+ODEsolver::ODEsolver(const std::function<double(double, double)> &f
+                     ,const std::function<double(double, double)> &f_prime
                      , const double y0
                      , const double T
                      , const int N)
@@ -37,20 +39,23 @@ void ODEsolver::solveCN(void) {
         double t_np1 = m_t[i+1];
         //todo: la F dovrebbe riuscire a ricavarla da un input, Fprime dovrebbe essere fatta con differenze finite
         auto F = [&](double x){return x - m_h/2*(m_f(t_np1,x)+m_f(t_n,m_u[i]))-m_u[i];};
-        auto Fprime = [&](double x){ return 1 - (m_h/2)*m_fprime(t_np1,x); };
+        //auto Fprime = [&](double x){ return 1 - (m_h/2)*m_fprime(t_np1,x); };
+        double h = 0.1;
+        auto Fprime = apsc::makeForwardDerivative<1>(F, h);
 
-        /*
+
+
         // std::tuple<double, bool>
         // Newton(Function const &f, Dfunction const & df, double a, double tol = 1e-4,
         //       double tola = 1.e-10, unsigned int maxIt = 150)
         std::tuple<double, bool> temp;
         temp = Newton(F, Fprime, m_u[i]);
-        m_u[i+1] = std::get<0>(temp);
-         */
+        m_u.emplace_back(std::get<0>(temp));
 
-        NewtonSolver solver(F, Fprime, 1e-4, 1e-4, 150);
-        solver.solve(m_u[i]);
-        m_u.emplace_back(solver.get_result());
+
+        //NewtonSolver solver(F, Fprime, 1e-4, 1e-4, 150);
+        //solver.solve(m_u[i]);
+        //m_u.emplace_back(solver.get_result());
     }
 }
 

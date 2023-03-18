@@ -1,6 +1,7 @@
 # first version of my MAKEFILE that doesn't bind any external library
 CXX = g++
 CXXFLAGS = -std=c++20 -O3 -Wall -I.
+CPPFLAGS ?= -I Derivatives -I include
 
 EXEC = CN_solver
 
@@ -16,7 +17,7 @@ $(EXEC): $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@
 
 %.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $(CPPFLAGS) $< -o $@
 
 # extended lines become:
 # g++ -std=c++20 -O3 -Wall -I.   -c -o main.o main.cpp
