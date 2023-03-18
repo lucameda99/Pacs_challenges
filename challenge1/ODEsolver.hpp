@@ -5,7 +5,6 @@
 #ifndef CHALLENGE1_ODESOLVER_H
 #define CHALLENGE1_ODESOLVER_H
 
-
 #include <vector>
 #include <functional>
 
@@ -18,13 +17,13 @@ private:
     double m_h;
     vector<double> m_t, m_u;
     std::function<double(double, double)> m_f;
-    std::function<double(double, double)> m_fprime;
+    // std::function<double(double, double)> m_fprime;
 
 public:
     // Constructor
     ODEsolver(
             std::function<double(double,double)> f
-            , std::function<double(double, double)> fprime
+            //, std::function<double(double, double)> fprime
             , double y0
             , double T
             , int N);
@@ -33,9 +32,9 @@ public:
     void solveCN(void);
 
     // Getters
-    const vector<double> &getT() const;
+    [[nodiscard("return value of getT discarded!")]] const vector<double> &getT() const;
 
-    const vector<double> &getU() const;
+    [[nodiscard("return value of getU discarded!")]] const vector<double> &getU() const;
 };
 
 

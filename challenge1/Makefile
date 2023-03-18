@@ -6,7 +6,8 @@ EXEC = CN_solver
 
 SRCS = main.cpp ODEsolver.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = newton.hpp ODEsolver.hpp
+# HEADERS = newton.hpp ODEsolver.hpp
+HEADERS = ODEsolver.hpp basicZeroFun.hpp Derivatives.hpp extendedAssert.hpp functionConcepts.hpp
 
 .PHONY: all clean #"all" and "clean" are not filenames
 
@@ -25,5 +26,6 @@ $(EXEC): $(OBJS)
 
 clean:
 	$(RM) $(OBJS) $(EXEC)
-	$(RM) $(OBJS) output.txt
+	$(RM) output.txt
+	$(RM) output.png
 

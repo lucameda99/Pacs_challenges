@@ -3,10 +3,7 @@
 #include <vector>
 #include <functional>
 #include <fstream>
-#include "ODEsolver.h"
-
-//todo: come facciamo qui ad includere questa?
-// #include "basicZeroFun.hpp"
+#include "ODEsolver.hpp"
 
 using std::vector;
 using std::function;
@@ -14,18 +11,20 @@ using std::function;
 double f(const double t, const double y) {
     return -t * exp(-y);
 }
+/*
 double fprime(const double t, const double y){
     return -exp(-y)+t*t*exp(-2*y);
 }
+ */
 int main(int argc, char **argv){
 
     std::cout << "start debug"<< std::endl;
-    ODEsolver solver(f,fprime,0,1,100);
+    // ODEsolver solver(f,fprime,0,1,100);
+    ODEsolver solver(f,0,1,20);
 
     solver.solveCN();
 
     // get the solution with the getters, ostream...
-    //todo: come passiamo le soluzioni senza copiarle?
     vector<double> t = solver.getT();
     vector<double> U = solver.getU();
 
