@@ -11,7 +11,7 @@ ODEsolver::ODEsolver(std::function<double(double, double)> f
                      // , std::function<double(double, double)> f_prime
                      , const double y0
                      , const double T
-                     , const int N)
+                     , const unsigned int N)
                      : m_f(f)
                      // , m_fprime(f_prime)
                      , m_y0(y0)
@@ -21,7 +21,7 @@ ODEsolver::ODEsolver(std::function<double(double, double)> f
     m_h = (m_T/static_cast<double>(m_N));
 
     m_u.reserve(N+1);
-    m_u.emplace_back(y0);
+    m_u.emplace_back(m_y0);
 
     m_t.reserve(N+1);
     //build the vector of times in here
@@ -32,7 +32,7 @@ ODEsolver::ODEsolver(std::function<double(double, double)> f
 void ODEsolver::solveCN(void) {
 
     // solve using crank nicolson
-    for (int i = 0; i < m_N; ++i) {
+    for (unsigned int i = 0; i < m_N; ++i) {
         // double t_n = i*m_h;
         //double t_np1 = (i+1)*m_h;
         double t_n = m_t[i];

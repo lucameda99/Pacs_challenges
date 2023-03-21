@@ -13,7 +13,7 @@ using std::vector;
 class ODEsolver {
 private:
     const double m_y0, m_T;
-    const int m_N;
+    const unsigned int m_N;
     double m_h;
     vector<double> m_t, m_u;
     std::function<double(double, double)> m_f;
@@ -26,7 +26,7 @@ public:
             //, std::function<double(double, double)> fprime
             , double y0
             , double T
-            , int N);
+            , unsigned int N);
 
     // Solve method
     void solveCN(void);

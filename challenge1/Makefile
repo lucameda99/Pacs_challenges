@@ -1,6 +1,6 @@
 # first version of my MAKEFILE that doesn't bind any external library
 CXX = g++
-CXXFLAGS = -std=c++20 -O3 -Wall -I.
+CXXFLAGS = -std=c++20 -O3 -Wall -I. # -I./include
 
 EXEC = CN_solver
 
@@ -28,4 +28,6 @@ clean:
 	$(RM) $(OBJS) $(EXEC)
 	$(RM) output.txt
 	$(RM) output.png
+	$(RM) convergence_rate.txt
+	$(RM) convergence_rate.png
 
