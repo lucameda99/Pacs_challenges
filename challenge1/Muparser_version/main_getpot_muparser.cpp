@@ -14,9 +14,11 @@
 using std::vector;
 using std::function;
 
-void test_convergence(const std::vector<double>&, const double&, const double&,
-        const double&,std::function<double(double, double)> f,
-                      std::function<double(double, double)> Uex);
+void test_convergence(const std::vector<double>&, const double&,
+        const double&, const double&,
+        std::function<double(const double&, const double&)>,
+        std::function<double(const double&)>);
+
 double L2_norm(const std::vector<double>&, const std::vector<double>&);
 
 int main(int argc, char **argv){
@@ -25,7 +27,8 @@ int main(int argc, char **argv){
     const std::string f_str = datafile("f", "-t * exp(-y)");
     const std::string uex_str  = datafile("uex", "log(1-t*t*0.5)");
 
-    MuparserFun f(f_str), uex(uex_str);
+    MuparserFun2 f(f_str);
+    MuparserFun uex(uex_str);
 
     const double y0 = datafile("y0", 0);
     const double T = datafile("Tf", 1);
@@ -33,10 +36,11 @@ int main(int argc, char **argv){
     const double theta = datafile("theta", 0.5);
     const bool convergence = datafile("do_convergence_test", 0);
 
-    const std::vector<double> N = datafile("convergence_steps", {10, 20, 30, 40, 50});
+    // const std::vector<double> N = datafile("convergence_steps", "{10, 20, 30, 40, 50}");
+    const std::vector<double> N = {10, 20, 30, 40, 50};
 
     // start solving one problem
-    ODEsolver solver(f,y0,T,n);
+    ODEsolver solver(f,y0,T,n,theta);
     solver.solveCN();
 
     // get the solution with the getters, ostream...
@@ -71,8 +75,9 @@ int main(int argc, char **argv){
 }
 
 void test_convergence(const std::vector<unsigned int>& N, const double& y0, const double& T,
-                      const double& theta, std::function<double(double, double)> f,
-                      std::function<double(double, double)> Uex){
+                      const double& theta,
+                      const std::function<double(const double&, const double&)> f,
+                      const std::function<double(const double&)> Uex){
 
     // open output file
     std::ofstream outFile("convergence_rate.txt");

@@ -3,48 +3,37 @@
 #include <memory>
 #include <string>
 
-class MuparserFun
-{
+class MuparserFun{
+
 private:
     double     m_var;
     mu::Parser m_parser;
+
 public:
-    MuparserFun(const MuparserFun &m)
-            : m_parser(m.m_parser)
-    {
+    MuparserFun(const MuparserFun &m) : m_parser(m.m_parser){
         m_parser.DefineVar("t", &m_var);
     };
 
-    MuparserFun(const std::string &s)
-    {
-        try
-        {
+    MuparserFun(const std::string &s){
+        try{
             m_parser.DefineVar("t", &m_var);
             m_parser.SetExpr(s);
-        }
-        catch (mu::Parser::exception_type &e)
-        {
+        }catch (mu::Parser::exception_type &e){
             std::cerr << e.GetMsg() << std::endl;
         }
     };
 
-    double
-    operator()(const double &x)
-    {
+    double operator()(const double &t){
         double y = 0;
 
         m_var = t;
 
-        try
-        {
+        try{
             y = m_parser.Eval();
-        }
-        catch (mu::Parser::exception_type &e)
-        {
+        } catch (mu::Parser::exception_type &e){
             std::cerr << e.GetMsg() << std::endl;
         }
         return y;
     };
-
 
 };

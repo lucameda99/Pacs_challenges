@@ -34,9 +34,11 @@ int main(int argc, char **argv){
     // std::cout << "start debug"<< std::endl;
     // ODEsolver solver(f,fprime,0,1,100);
 
+    // ΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞ SET PARAMETERS ! ΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞ
     const double y0 = 0, T = 1, theta = 0.5;
     const unsigned int n = 10;
     std::vector<unsigned int> N = {10, 20, 40, 80, 160};
+    // ΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞ
 
     ODEsolver solver(f,y0,T,n,theta);
 

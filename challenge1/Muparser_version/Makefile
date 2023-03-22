@@ -12,9 +12,9 @@ EXEC_MUPARSER     = solver_muparser
 LDFLAGS_MUPARSER ?= -L lib -Wl,-rpath=lib
 LIB_MUPARSER     ?= -lmuparser
 
-SRCS = main.cpp main_getpot_muparser.cpp ODEsolver.cpp
+SRCS = main_getpot_muparser.cpp ODEsolver.cpp
 OBJS = $(SRCS:.cpp=.o)
-HEADERS = ODEsolver.hpp basicZeroFun.hpp Derivatives.hpp extendedAssert.hpp functionConcepts.hpp
+HEADERS = ODEsolver.hpp basicZeroFun.hpp Derivatives.hpp extendedAssert.hpp functionConcepts.hpp muParser.h
 
 all: $(EXEC) $(EXEC_MUPARSER)	
 

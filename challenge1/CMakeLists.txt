@@ -1,14 +1,10 @@
 cmake_minimum_required(VERSION 3.20)
-project(chellenge1)
+project(challenge1)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_FLAGS "-std=c++20")
 
-add_executable(chellenge1
-        main.cpp
-        main_getpot_muparser.cpp
-        muparser_fun.hpp
-        ODEsolver.h
+add_executable(challenge1 main.cpp
+        ODEsolver.hpp
         ODEsolver.cpp
         newton.hpp
         basicZeroFun.hpp

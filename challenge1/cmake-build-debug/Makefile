@@ -64,16 +64,6 @@ CMAKE_BINARY_DIR = \\wsl.localhost\Ubuntu\home\pacs_fork\Pacs_challenges\challen
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -83,6 +73,16 @@ rebuild_cache:
 # Special rule for the target rebuild_cache
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -116,24 +116,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named chellenge1
+# Target rules for targets named challenge1
 
 # Build rule for target.
-chellenge1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 chellenge1
-.PHONY : chellenge1
+challenge1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 challenge1
+.PHONY : challenge1
 
 # fast build rule for target.
-chellenge1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\chellenge1.dir\build.make CMakeFiles/chellenge1.dir/build
-.PHONY : chellenge1/fast
+challenge1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\challenge1.dir\build.make CMakeFiles/challenge1.dir/build
+.PHONY : challenge1/fast
 
 ODEsolver.obj: ODEsolver.cpp.obj
 .PHONY : ODEsolver.obj
 
 # target to build an object file
 ODEsolver.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\chellenge1.dir\build.make CMakeFiles/chellenge1.dir/ODEsolver.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\challenge1.dir\build.make CMakeFiles/challenge1.dir/ODEsolver.cpp.obj
 .PHONY : ODEsolver.cpp.obj
 
 ODEsolver.i: ODEsolver.cpp.i
@@ -141,7 +141,7 @@ ODEsolver.i: ODEsolver.cpp.i
 
 # target to preprocess a source file
 ODEsolver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\chellenge1.dir\build.make CMakeFiles/chellenge1.dir/ODEsolver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\challenge1.dir\build.make CMakeFiles/challenge1.dir/ODEsolver.cpp.i
 .PHONY : ODEsolver.cpp.i
 
 ODEsolver.s: ODEsolver.cpp.s
@@ -149,7 +149,7 @@ ODEsolver.s: ODEsolver.cpp.s
 
 # target to generate assembly for a file
 ODEsolver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\chellenge1.dir\build.make CMakeFiles/chellenge1.dir/ODEsolver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\challenge1.dir\build.make CMakeFiles/challenge1.dir/ODEsolver.cpp.s
 .PHONY : ODEsolver.cpp.s
 
 main.obj: main.cpp.obj
@@ -157,7 +157,7 @@ main.obj: main.cpp.obj
 
 # target to build an object file
 main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\chellenge1.dir\build.make CMakeFiles/chellenge1.dir/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\challenge1.dir\build.make CMakeFiles/challenge1.dir/main.cpp.obj
 .PHONY : main.cpp.obj
 
 main.i: main.cpp.i
@@ -165,7 +165,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\chellenge1.dir\build.make CMakeFiles/chellenge1.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\challenge1.dir\build.make CMakeFiles/challenge1.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -173,7 +173,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\chellenge1.dir\build.make CMakeFiles/chellenge1.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\challenge1.dir\build.make CMakeFiles/challenge1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -184,7 +184,7 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... chellenge1
+	@echo ... challenge1
 	@echo ... ODEsolver.obj
 	@echo ... ODEsolver.i
 	@echo ... ODEsolver.s

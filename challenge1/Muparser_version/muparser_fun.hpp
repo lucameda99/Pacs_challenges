@@ -3,7 +3,7 @@
 #include <memory>
 #include <string>
 
-class MuparserFun {
+class MuparserFun2 {
 private:
     double m_var1;
     double m_var2;
@@ -11,7 +11,7 @@ private:
 
 public:
     // constructor
-    MuparserFun(const MuparserFun &m)
+    MuparserFun2(const MuparserFun2 &m)
     : m_parser(m.m_parser)
   {
     m_parser.DefineVar("t", &m_var1);
@@ -19,12 +19,12 @@ public:
   };
 
     // constructor (with string)
-  MuparserFun(const std::string &s)
+  MuparserFun2(const std::string &s)
   {
     try
       {
         m_parser.DefineVar("t", &m_var1);
-        m_parses.DefineVar("y", &m_var2);
+        m_parser.DefineVar("y", &m_var2);
         m_parser.SetExpr(s);
       }
     catch (mu::Parser::exception_type &e)
@@ -34,7 +34,7 @@ public:
   };
 
   double
-  operator()(const double &x, const double &y)
+  operator()(const double &t, const double &y)
   {
     double f = 0;
 
