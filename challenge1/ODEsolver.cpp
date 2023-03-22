@@ -11,12 +11,14 @@ ODEsolver::ODEsolver(std::function<double(double, double)> f
                      // , std::function<double(double, double)> f_prime
                      , const double y0
                      , const double T
-                     , const unsigned int N)
+                     , const unsigned int N
+                     , const double theta)
                      : m_f(f)
                      // , m_fprime(f_prime)
                      , m_y0(y0)
                      , m_T(T)
                      , m_N(N)
+                     , m_theta(theta)
 {
     m_h = (m_T/static_cast<double>(m_N));
 
@@ -38,10 +40,12 @@ void ODEsolver::solveCN(void) {
         double t_n = m_t[i];
         double t_np1 = m_t[i+1];
         //todo: la F dovrebbe riuscire a ricavarla da un input, Fprime dovrebbe essere fatta con differenze finite
-        auto F = [&](double x){return x - m_h/2*(m_f(t_np1,x)+m_f(t_n,m_u[i]))-m_u[i];};
+
+        // auto F = [&](double x){return x - m_h/2*(m_f(t_np1,x)+m_f(t_n,m_u[i]))-m_u[i];};
+        auto F = [&](double x){return x - m_theta*m_h*m_f(t_np1,x) - (1-m_theta)*m_h*m_f(t_n,m_u[i]) - m_u[i];};
+
         // auto Fprime = [&](double x){ return 1 - (m_h/2)*m_fprime(t_np1,x); };
         auto Fprime = apsc::makeForwardDerivative<1>(F, m_h);
-
 
         // std::tuple<double, bool>
         // Newton(Function const &f, Dfunction const & df, double a, double tol = 1e-4,

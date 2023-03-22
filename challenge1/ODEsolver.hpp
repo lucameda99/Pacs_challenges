@@ -18,6 +18,7 @@ private:
     vector<double> m_t, m_u;
     std::function<double(double, double)> m_f;
     // std::function<double(double, double)> m_fprime;
+    const double m_theta = 0.5;
 
 public:
     // Constructor
@@ -26,7 +27,8 @@ public:
             //, std::function<double(double, double)> fprime
             , double y0
             , double T
-            , unsigned int N);
+            , unsigned int N
+            , double theta);
 
     // Solve method
     void solveCN(void);

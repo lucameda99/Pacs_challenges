@@ -1,0 +1,7 @@
+f = -t * exp(-y)
+uex = "log(1-t*t*0.5)"
+y0 = 0
+Tf = 1
+N = 50
+theta = 0.5
+do_convergence test = True

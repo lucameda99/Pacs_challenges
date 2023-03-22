@@ -7,39 +7,36 @@
 
 #include "ODEsolver.hpp"
 
+#include <GetPot>
+#include "muparser_fun.hpp"
+#include "muparser_sol.hpp"
+
 using std::vector;
 using std::function;
 
-double f(const double t, const double y) {
-    return -t * exp(-y);
-}
-/*
-double fprime(const double t, const double y){
-    return -exp(-y)+t*t*exp(-2*y);
-}
- */
-double Uex(const double t){
-    if(t<-std::numbers::sqrt2 || t>std::numbers::sqrt2) {
-        std::cout << "\n\t computing exact solution out of domain" << std::endl;
-        return 0;
-    }
-    return log(1-t*t*0.5);
-}
-
-void test_convergence(const std::vector<unsigned int>& N, const double& y0, const double& T, const double& theta);
+void test_convergence(const std::vector<double>&, const double&, const double&,
+        const double&,std::function<double(double, double)> f,
+                      std::function<double(double, double)> Uex);
 double L2_norm(const std::vector<double>&, const std::vector<double>&);
 
 int main(int argc, char **argv){
 
-    // std::cout << "start debug"<< std::endl;
-    // ODEsolver solver(f,fprime,0,1,100);
+    GetPot datafile("data.txt");
+    const std::string f_str = datafile("f", "-t * exp(-y)");
+    const std::string uex_str  = datafile("uex", "log(1-t*t*0.5)");
 
-    const double y0 = 0, T = 1, theta = 0.5;
-    const unsigned int n = 10;
-    std::vector<unsigned int> N = {10, 20, 40, 80, 160};
+    MuparserFun f(f_str), uex(uex_str);
 
-    ODEsolver solver(f,y0,T,n,theta);
+    const double y0 = datafile("y0", 0);
+    const double T = datafile("Tf", 1);
+    const double n = datafile("N", 10);
+    const double theta = datafile("theta", 0.5);
+    const bool convergence = datafile("do_convergence_test", 0);
 
+    const std::vector<double> N = datafile("convergence_steps", {10, 20, 30, 40, 50});
+
+    // start solving one problem
+    ODEsolver solver(f,y0,T,n);
     solver.solveCN();
 
     // get the solution with the getters, ostream...
@@ -66,13 +63,16 @@ int main(int argc, char **argv){
         outFile << t[i] << "\t" << U[i] << "\n";
     outFile.close();
 
-    test_convergence(N, y0, T, theta);
+    // if users wants, perform convergence test
+    if(convergence)
+        test_convergence(N, y0, T, theta, f, uex);
 
     return 0;
 }
 
-// test convergence facciamolo diventare un altro eseguibile
-void test_convergence(const std::vector<unsigned int>& N, const double& y0, const double& T, const double& theta){
+void test_convergence(const std::vector<unsigned int>& N, const double& y0, const double& T,
+                      const double& theta, std::function<double(double, double)> f,
+                      std::function<double(double, double)> Uex){
 
     // open output file
     std::ofstream outFile("convergence_rate.txt");
