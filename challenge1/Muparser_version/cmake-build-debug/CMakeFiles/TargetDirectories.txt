@@ -1,3 +1,0 @@
-//wsl.localhost/Ubuntu/home/pacs_fork/Pacs_challenges/challenge1/Muparser_version/cmake-build-debug/CMakeFiles/challenge1_muparser.dir
-//wsl.localhost/Ubuntu/home/pacs_fork/Pacs_challenges/challenge1/Muparser_version/cmake-build-debug/CMakeFiles/edit_cache.dir
-//wsl.localhost/Ubuntu/home/pacs_fork/Pacs_challenges/challenge1/Muparser_version/cmake-build-debug/CMakeFiles/rebuild_cache.dir

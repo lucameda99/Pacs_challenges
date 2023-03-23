@@ -37,7 +37,7 @@ int main(int argc, char **argv){
     // ΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞ SET PARAMETERS ! ΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞ
     const double y0 = 0, T = 1, theta = 0.5;
     const unsigned int n = 10;
-    std::vector<unsigned int> N = {10, 20, 40, 80, 160};
+    const std::vector<unsigned int> N = {10, 20, 40, 80, 160};
     // ΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞΞ
 
     ODEsolver solver(f,y0,T,n,theta);
@@ -73,7 +73,6 @@ int main(int argc, char **argv){
     return 0;
 }
 
-// test convergence facciamolo diventare un altro eseguibile
 void test_convergence(const std::vector<unsigned int>& N, const double& y0, const double& T, const double& theta){
 
     // open output file
@@ -96,10 +95,6 @@ void test_convergence(const std::vector<unsigned int>& N, const double& y0, cons
         if(t.size()!=U.size())
             std::cerr<<"t and U do NOT have the same size"<<std::endl;
 
-        /*
-         * non mi interessa salvare ogni soluzione, mi serve solamente la norma
-         * tra U e la soluzione esatta calcolata in t
-         * */
 
         // compute exact solution Uex in the points of t
         std::vector<double> U_ex;

@@ -1,0 +1,8 @@
+f = -t*exp(-y)
+uex = log(1-t*t*0.5)
+y0 = 0
+Tf = 1
+N = 10
+theta = 0.5
+do_convergence_test = 1
+convergence_steps = 10,20,30,40,50

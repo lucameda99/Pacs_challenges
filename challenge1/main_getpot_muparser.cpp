@@ -3,41 +3,55 @@
 #include <vector>
 #include <functional>
 #include <fstream>
-#include <numbers>
+#include <string>
 
 #include "ODEsolver.hpp"
 
 #include <GetPot>
 #include "muparser_fun.hpp"
-#include "muparser_sol.hpp"
 
 using std::vector;
 using std::function;
 
-void test_convergence(const std::vector<double>&, const double&,
-        const double&, const double&,
-        std::function<double(const double&, const double&)>,
-        std::function<double(const double&)>);
+void test_convergence(const std::vector<unsigned int>& N, const double& y0, const double& T,
+                      const double& theta,
+                      std::function<double(const double&, const double&)> f,
+                      std::function<double(const double&)> Uex);
 
 double L2_norm(const std::vector<double>&, const std::vector<double>&);
 
 int main(int argc, char **argv){
 
     GetPot datafile("data.txt");
-    const std::string f_str = datafile("f", "-t * exp(-y)");
-    const std::string uex_str  = datafile("uex", "log(1-t*t*0.5)");
+    const std::string f_str = datafile("f", "0");
+    const std::string uex_str  = datafile("uex", "0");
 
-    MuparserFun2 f(f_str);
-    MuparserFun uex(uex_str);
+    MuparserFun f(f_str), uex(uex_str);
 
     const double y0 = datafile("y0", 0);
     const double T = datafile("Tf", 1);
-    const double n = datafile("N", 10);
+    const unsigned int n = datafile("N", 10);
     const double theta = datafile("theta", 0.5);
     const bool convergence = datafile("do_convergence_test", 0);
+    // reading a vector seems to be a bit more complicated, parse it manually?
+    const std::string N_str = datafile("convergence_steps", "10,20,40,80,160");
+    std::vector<unsigned int> N;
+    std::stringstream ss(N_str);
+    std::string item;
+    while (std::getline(ss, item, ',')) {
+        N.push_back(std::stoi(item));
+    }
 
-    // const std::vector<double> N = datafile("convergence_steps", "{10, 20, 30, 40, 50}");
-    const std::vector<double> N = {10, 20, 30, 40, 50};
+    std::cout << "\n\t Parameters read from data.txt" <<
+        "\n\t\t function f: " << f_str << "\n\t\t function uex: " << uex_str <<
+        "\n\t\t y0: " << y0 << "\n\t\t T: " << T << "\n\t\t N: " << n <<
+        "\n\t\t theta: " <<theta << "\n\t\t convergence: " << convergence << std::endl;
+
+    std::cout << "\t\t convergence_steps: ";
+    for (const auto &i : N)
+        std::cout << i << ", ";
+    std::cout << std::endl;
+
 
     // start solving one problem
     ODEsolver solver(f,y0,T,n,theta);
@@ -68,16 +82,19 @@ int main(int argc, char **argv){
     outFile.close();
 
     // if users wants, perform convergence test
-    if(convergence)
+    if(convergence){
+        std::cout << "\n\t convergence test..." << std::endl;
         test_convergence(N, y0, T, theta, f, uex);
+    }
+
 
     return 0;
 }
 
 void test_convergence(const std::vector<unsigned int>& N, const double& y0, const double& T,
                       const double& theta,
-                      const std::function<double(const double&, const double&)> f,
-                      const std::function<double(const double&)> Uex){
+                      std::function<double(const double&, const double&)> f,
+                      std::function<double(const double&)> Uex){
 
     // open output file
     std::ofstream outFile("convergence_rate.txt");

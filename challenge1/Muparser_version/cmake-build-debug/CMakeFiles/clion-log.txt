@@ -1,4 +1,0 @@
-"C:\Program Files\JetBrains\CLion 2021.2.3\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" \\wsl.localhost\Ubuntu\home\pacs_fork\Pacs_challenges\challenge1\Muparser_version
--- Configuring done
--- Generating done
--- Build files have been written to: //wsl.localhost/Ubuntu/home/pacs_fork/Pacs_challenges/challenge1/Muparser_version/cmake-build-debug

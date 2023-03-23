@@ -1,31 +1,36 @@
-# first version of my MAKEFILE that doesn't bind any external library
-CXX = g++
-CXXFLAGS = -std=c++20 -O3 -Wall -I. # -I./include
+CXX      ?= g++
+CXXFLAGS ?= -std=c++20
+CPPFLAGS ?= -O3 -Wall -I. -Wno-conversion-null -Wno-deprecated-declarations
 
-EXEC = CN_solver
+EXEC     = main
+LDFLAGS ?= 
+LDLIBS  ?= 
 
-SRCS = main.cpp ODEsolver.cpp
-OBJS = $(SRCS:.cpp=.o)
-# HEADERS = newton.hpp ODEsolver.hpp
+# Flags for the muParser example.
+CPPFLAG_MUPARSER ?= -I./ -I/include
+EXEC_MUPARSER     = main_getpot_muparser
+LDFLAGS_MUPARSER ?= -L/lib -Wl,-rpath=/lib
+LIB_MUPARSER     ?= -lmuparser
+
 HEADERS = ODEsolver.hpp basicZeroFun.hpp Derivatives.hpp extendedAssert.hpp functionConcepts.hpp
 
-.PHONY: all clean #"all" and "clean" are not filenames
-
-all: $(EXEC) #target is "CN_solver", it checks for updates on CN_solver before rebuilding it?
-
-$(EXEC): $(OBJS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+all: $(EXEC) $(EXEC_MUPARSER)
 
 %.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $<
 
-# extended lines become:
-# g++ -std=c++20 -O3 -Wall -I.   -c -o main.o main.cpp
-# g++ -std=c++20 -O3 -Wall -I.   -c -o ODEsolver.o ODEsolver.cpp
-# g++ -std=c++20 -O3 -Wall -I. main.o ODEsolver.o -o CN_solver
+$(EXEC_MUPARSER).o: %.o: %.cpp $(HEADERS) muparser_fun.hpp # here we're adding muparser_fun.hpp
+	$(CXX) -c $(CPPFLAGS) $(CPPFLAG_MUPARSER) $(CXXFLAGS) $<
+
+$(EXEC): %: %.o
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $< $(LIBS) -o $@
+
+$(EXEC_MUPARSER): %: %.o
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LDFLAGS_MUPARSER) $< $(LIBS) $(LIB_MUPARSER) -o $@
 
 clean:
-	$(RM) $(OBJS) $(EXEC)
+	$(RM) $(EXEC) $(EXEC_MUPARSER)
+	$(RM) *~
 	$(RM) output.txt
 	$(RM) output.png
 	$(RM) convergence_rate.txt
