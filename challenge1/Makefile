@@ -7,9 +7,9 @@ LDFLAGS ?=
 LDLIBS  ?= 
 
 # Flags for the muParser example.
-CPPFLAG_MUPARSER ?= -I./ -I/include
+CPPFLAG_MUPARSER ?= -I./ -I../challenge1/include
 EXEC_MUPARSER     = main_getpot_muparser
-LDFLAGS_MUPARSER ?= -L/lib -Wl,-rpath=/lib
+LDFLAGS_MUPARSER ?= -L../challenge1/lib -Wl,-rpath=../challenge1/lib
 LIB_MUPARSER     ?= -lmuparser
 
 HEADERS = ODEsolver.hpp basicZeroFun.hpp Derivatives.hpp extendedAssert.hpp functionConcepts.hpp
@@ -35,4 +35,4 @@ clean:
 	$(RM) output.png
 	$(RM) convergence_rate.txt
 	$(RM) convergence_rate.png
-
+	$(RM) *.o
