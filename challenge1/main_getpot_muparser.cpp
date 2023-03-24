@@ -116,10 +116,6 @@ void test_convergence(const std::vector<unsigned int>& N, const double& y0, cons
         if(t.size()!=U.size())
             std::cerr<<"t and U do NOT have the same size"<<std::endl;
 
-        /*
-         * non mi interessa salvare ogni soluzione, mi serve solamente la norma
-         * tra U e la soluzione esatta calcolata in t
-         * */
 
         // compute exact solution Uex in the points of t
         std::vector<double> U_ex;
