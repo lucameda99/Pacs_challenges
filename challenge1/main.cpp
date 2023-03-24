@@ -13,6 +13,7 @@ using std::function;
 double f(const double t, const double y) {
     return -t * exp(-y);
 }
+//deprecated//
 /*
 double fprime(const double t, const double y){
     return -exp(-y)+t*t*exp(-2*y);

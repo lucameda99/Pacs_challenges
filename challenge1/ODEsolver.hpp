@@ -10,6 +10,9 @@
 
 using std::vector;
 
+//Implement a class where we store the specific parameters to solve the ODE with a time dependent function f , we store two vector
+//containing time values and the respective solution values at those time steps and finally we add the parameter theta
+//to choose which method to use to solve the equation
 class ODEsolver {
 private:
     const std::function<double(double, double)> m_f;
@@ -53,10 +56,12 @@ public:
 
     // Solve method
     void solveCN(void) {
-        // solve using crank nicolson
+        // solve using theta method (theta=1/2 ---> CN method)
         for (unsigned int i = 0; i < m_N; ++i) {
             double t_n = m_t[i];
             double t_np1 = m_t[i + 1];
+
+            //defining the function F for which we want to approximate the zero
             // auto F = [&](double x){return x - m_h/2*(m_f(t_np1,x)+m_f(t_n,m_u[i]))-m_u[i];};
             auto F = [&](double x) {
                 return x - m_theta * m_h * m_f(t_np1, x) - (1 - m_theta) * m_h * m_f(t_n, m_u[i]) - m_u[i];
@@ -65,9 +70,7 @@ public:
             // auto Fprime = [&](double x){ return 1 - (m_h/2)*m_fprime(t_np1,x); };
             auto Fprime = apsc::makeForwardDerivative<1>(F, m_h);
 
-            // std::tuple<double, bool>
-            // Newton(Function const &f, Dfunction const & df, double a, double tol = 1e-4,
-            //       double tola = 1.e-10, unsigned int maxIt = 150)
+
             std::tuple<double, bool> temp;
             temp = apsc::Newton(F, Fprime, m_u[i]);
             // m_u[i+1] = std::get<0>(temp);
