@@ -7,16 +7,18 @@
 #include <iostream>
 
 #include "Traits.h"
+namespace zerosolvers {
 
-class BaseSolver {
-private:
+    class BaseSolver {
 
-public:
-    BaseSolver() = default;
-    virtual ~BaseSolver() {}
 
-    Traits::ReturnType solve() const = 0;
-};
+    public:
+        BaseSolver() = default;
 
+        virtual ~BaseSolver() {}
+
+        virtual Traits::ReturnType solve() = 0;
+    };
+}
 
 #endif //SOLVER_FACTORY_SINGLETON_BASESOLVER_H

@@ -14,19 +14,19 @@
 
 class BaseSolver;
 
-namespace Traits {
-    using ID = std::string;
-    using Builder = std::function<std::unique_ptr<BaseSolver>()>;
-    using scalar = double;
-    using ReturnType = std::tuple<scalar, bool>;
+namespace zerosolvers{
 
-    using ScalarFunction = std::function<scalar(scalar)>;
-    /*
-    template<class F>
-    concept ScalarFunction = std::convertible_to<F, std::function<double(double)>>
-            || std::convertible_to<F, std::function<double (double const&)>>;
-    */
-};
+    struct Traits {
+        //using ID = std::string;
+        //using Builder = std::function<std::unique_ptr<BaseSolver>()>;
+        using scalar = double;
+        using ReturnType = std::tuple<scalar, bool>;
+
+        using ScalarFunction = std::function<scalar(scalar)>;
+    };
+
+
+}
 
 
 #endif //SOLVER_FACTORY_SINGLETON_TRAITS_H
