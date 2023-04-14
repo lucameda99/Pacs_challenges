@@ -1,0 +1,21 @@
+# File with parameters used in the methods implemented. 
+# The function of which we want to find the zero is defined in the main.cpp
+
+# INTERVAL
+# first and last end of initial interval for Bisection and Brent
+# first points to compute derivatives for QuasiNewton and Secant
+a = -1.
+b = 1.
+
+# TOLERANCES
+# Relative and absolute tolerance
+tol = 1e-6
+tola = 1e-10
+
+# MAX ITERATIONS
+# maximum number of iterations of the method
+maxIt = 100
+
+# METHODS
+# method used for finding the zero. You can choose between Secant, Bisection, QuasiNewton, Brent.
+name = Secant
