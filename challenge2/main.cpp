@@ -12,7 +12,6 @@
 #include <math.h>
 #include <iostream>
 
-
 using T = zerosolvers::Traits;
 
 T::scalar f (T::scalar x) {
@@ -21,17 +20,14 @@ T::scalar f (T::scalar x) {
     return res;
 }
 
-
-
 int main(){
-
 
     T::ScalarFunction fun = &f;
     T::scalar a=-2;
     T::scalar b=-0;
     T::scalar tol=1e-5;
 
-auto sol = zerosolvers::createSolver("Bisection",fun,a,b,tol);
+auto sol = zerosolvers::createSolver<>("Bisection",fun,a,b,tol);
 auto result = sol->solve();
 std::cout << std::get<0>(result) << std::endl;
 }
