@@ -21,14 +21,18 @@ private:
     Real m_a, m_b, m_tol;
 };
 
+Bisection::Bisection(ScalarFunction &f, Real a, Real b, Real tol) : m_f(f), m_a(a), m_b(b), m_tol(tol) {}
+
 ResultType Bisection::solve() const {
 
     Real a = m_a;
     Real b = m_b;
+
     Real ya = m_f(a);
     Real yb = m_f(b);
+
     Real delta = b - a;
-    // SURE_ASSERT(ya * yb < 0, "Function must change sign at the two end values");
+    SURE_ASSERT(ya * yb < 0, "Function must change sign at the two end values");
     Real yc{ya};
     Real c{a};
     while(std::abs(delta) > 2 * m_tol)
@@ -47,9 +51,6 @@ ResultType Bisection::solve() const {
         }
         delta = b - a;
     }
-    return (a + b) / 2.;
+    return std::make_tuple((a + b)/2., true);
 }
-
-Bisection::Bisection(ScalarFunction &f, Real a, Real b, Real tol) : m_f(f), m_a(a), m_b(b), m_tol(tol) {}
-
 #endif //CHALLENGE2_UPDATE_BISECTION_H

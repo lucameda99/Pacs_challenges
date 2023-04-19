@@ -13,6 +13,11 @@
 #include "BaseSolver.h"
 
 #include "Bisection.h"
+#include "Newton.h"
+#include "RegulaFalsi.h"
+#include "Secant.h"
+// #include "BracketInterval.h"
+#include "BrentSearch.h"
 
 using ID = TypeTraits::ID;
 using ScalarFunction = TypeTraits::ScalarFunction;
@@ -35,6 +40,7 @@ public:
         std::cout << "\n\t New solver " << name << " has been added." << std::endl;
         //.emplace(name, []() { return std::make_unique<solver>(); });
     }
+
     std::unique_ptr<BaseSolver> selectSolver(const ID& name) const {
         auto it = m_solvers.find(name);
         if (it == m_solvers.end()) {

@@ -3,4 +3,5 @@ project(challenge2_update)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(challenge2_update main.cpp BaseSolver.h TypeTraits.h Bisection.h SolverFactory.h Newton.h)
+add_executable(challenge2_update main.cpp BaseSolver.h TypeTraits.h Bisection.h SolverFactory.h Newton.h RegulaFalsi.h
+        extendedAssert.hpp Secant.h BracketInterval.h BrentSearch.h)
