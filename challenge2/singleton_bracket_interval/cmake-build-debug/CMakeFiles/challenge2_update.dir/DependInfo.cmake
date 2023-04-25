@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/d/ingmat/pacs/singleton/main.cpp" "/cygdrive/d/ingmat/pacs/singleton/cmake-build-debug/CMakeFiles/challenge2_update.dir/main.cpp.o"
+  "C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/main.cpp" "C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/cmake-build-debug/CMakeFiles/challenge2_update.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

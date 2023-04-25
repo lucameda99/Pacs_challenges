@@ -24,24 +24,17 @@ int main() {
     Real start = -1;
     
     std::tuple<Real, Real, bool> interval = bracketInterval(F,start);
-    std::cout << "\n\t BreacketInterval search has reached convergence: " << std::get<2>(interval) << std::endl;
+    std::cout << "\n\t BracketInterval search has reached convergence: " << std::get<2>(interval) << std::endl;
 
     Real a = std::get<0>(interval);
     Real b = std::get<1>(interval);
-    // adding the bisection solver to the factory
+
+    // adding solvers to factory
     factory.addSolver<Bisection>("bisection", F, a, b);
-    // adding Newton method
     factory.addSolver<Newton>("newton", F, dF, a, b);
-    // adding RegulaFalsi method
     factory.addSolver<RegulaFalsi>("regulafalsi", F, a, b);
-    // adding Secant method
     factory.addSolver<Secant>("secant", F, a, b);
-
-    // adding BracketInterval method
-    // factory.addSolver<BracketInterval>("bracketinterval", F, a);
-    // adding BrentSearch method
     factory.addSolver<BrentSearch>("brentsearch", F, a, b);
-
     factory.addSolver<QuasiNewton>("quasinewton", F, a, b);
 
     //___SOLVE___
@@ -55,6 +48,7 @@ int main() {
     // solving with newton method
     solver = factory.selectSolver("newton");
     if (!solver) {return 0;}
+    // todo: raise a proper warning if the factory doesn't return a valid solver
     ResultType result = solver->solve();
     std::cout << "\n\t newton: "<< std::get<0>(result) << ", converged: " << std::get<1>(result) << std::endl;
 
@@ -75,12 +69,17 @@ int main() {
     result = solver->solve();
     std::cout << "\n\t brentsearch: "<< std::get<0>(result) << ", converged: " << std::get<1>(result) << std::endl;
 
+    // solving with Quasi Newton method
+    solver = factory.selectSolver("quasinewton");
+    if (!solver) {return 0;}
+    result = solver->solve();
+    std::cout << "\n\t quasinewton: "<< std::get<0>(result) << ", converged: " << std::get<1>(result) << std::endl;
 
 
     // selecting a non-existent solver
     solver = factory.selectSolver("bisection_method");
     if (!solver) {return 0;}
-    solver->solve(); // solving with bisection
+    solver->solve(); // solving with bisection_method
 
     std::cout << "Hello, World!" << std::endl;
     return 0;

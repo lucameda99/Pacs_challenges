@@ -1,3 +1,3 @@
-/cygdrive/d/ingmat/pacs/singleton/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/cygdrive/d/ingmat/pacs/singleton/cmake-build-debug/CMakeFiles/edit_cache.dir
-/cygdrive/d/ingmat/pacs/singleton/cmake-build-debug/CMakeFiles/challenge2_update.dir
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/cmake-build-debug/CMakeFiles/challenge2_update.dir
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/cmake-build-debug/CMakeFiles/rebuild_cache.dir

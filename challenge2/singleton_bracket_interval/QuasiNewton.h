@@ -21,30 +21,33 @@ private:
 };
 
 QuasiNewton::QuasiNewton(const ScalarFunction &f,
-               Real a,Real b,Real tol, Real tola, iterType maxIt)
+               Real a, Real b, Real tol, Real tola, iterType maxIt)
         : BaseSolver(f)
-        , m_df(df)
         , m_a(a)
+        , m_b(b)
         , m_tol(tol)
         , m_tola(tola)
         , m_maxIt(maxIt)
 {}
 
 ResultType QuasiNewton::solve() const {
-    Real		ya = fun(a);
+    Real a = m_a;
+    Real b = m_b;
+
+    Real		ya = m_f(a);
     Real 		resid = std::abs(ya);
-    itertype 	iter{0u};
-    Real 		check = tol * resid + tola;
+    iterType 	iter{0u};
+    Real 		check = m_tol * resid + m_tola;
     bool 		goOn = resid > check;
     Real 		sol = std::numeric_limits<Real>::has_quiet_NaN;
     Real 		h = std::abs((b - a) / 100.);
     Real		df;
 
-    while (goOn && iter < maxIt) {
+    while (goOn && iter < m_maxIt) {
         ++iter;
-        df = (fun(a + h) - fun(a - h)) / (2 * h);
+        df = (m_f(a + h) - m_f(a - h)) / (2 * h);
         a += -ya / df;
-        ya = fun(a);
+        ya = m_f(a);
         resid = std::abs(ya);
         goOn = resid > check;
     }

@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/challenge2_update.dir/main.cpp.o"
+  "CMakeFiles/challenge2_update.dir/main.cpp.obj"
   "challenge2_update.exe"
+  "challenge2_update.exe.manifest"
   "challenge2_update.pdb"
   "libchallenge2_update.dll.a"
 )

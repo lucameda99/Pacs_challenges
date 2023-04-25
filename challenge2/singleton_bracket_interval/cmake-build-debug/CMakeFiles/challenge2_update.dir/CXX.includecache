@@ -6,43 +6,49 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/d/ingmat/pacs/singleton/BaseSolver.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BaseSolver.h
 TypeTraits.h
-/cygdrive/d/ingmat/pacs/singleton/TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
 
-/cygdrive/d/ingmat/pacs/singleton/Bisection.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/Bisection.h
 BaseSolver.h
-/cygdrive/d/ingmat/pacs/singleton/BaseSolver.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BaseSolver.h
 TypeTraits.h
-/cygdrive/d/ingmat/pacs/singleton/TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
 
-/cygdrive/d/ingmat/pacs/singleton/BrentSearch.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BrentSearch.h
 BaseSolver.h
-/cygdrive/d/ingmat/pacs/singleton/BaseSolver.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BaseSolver.h
 TypeTraits.h
-/cygdrive/d/ingmat/pacs/singleton/TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
 
-/cygdrive/d/ingmat/pacs/singleton/Newton.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/Newton.h
 BaseSolver.h
-/cygdrive/d/ingmat/pacs/singleton/BaseSolver.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BaseSolver.h
 TypeTraits.h
-/cygdrive/d/ingmat/pacs/singleton/TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
 
-/cygdrive/d/ingmat/pacs/singleton/RegulaFalsi.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/QuasiNewton.h
+BaseSolver.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BaseSolver.h
+TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
+
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/RegulaFalsi.h
 algorithm
 -
 BaseSolver.h
-/cygdrive/d/ingmat/pacs/singleton/BaseSolver.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BaseSolver.h
 TypeTraits.h
-/cygdrive/d/ingmat/pacs/singleton/TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
 
-/cygdrive/d/ingmat/pacs/singleton/Secant.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/Secant.h
 BaseSolver.h
-/cygdrive/d/ingmat/pacs/singleton/BaseSolver.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BaseSolver.h
 TypeTraits.h
-/cygdrive/d/ingmat/pacs/singleton/TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
 
-/cygdrive/d/ingmat/pacs/singleton/SolverFactory.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/SolverFactory.h
 unordered_map
 -
 functional
@@ -50,35 +56,37 @@ functional
 memory
 -
 TypeTraits.h
-/cygdrive/d/ingmat/pacs/singleton/TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
 BaseSolver.h
-/cygdrive/d/ingmat/pacs/singleton/BaseSolver.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BaseSolver.h
 Bisection.h
-/cygdrive/d/ingmat/pacs/singleton/Bisection.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/Bisection.h
 Newton.h
-/cygdrive/d/ingmat/pacs/singleton/Newton.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/Newton.h
 RegulaFalsi.h
-/cygdrive/d/ingmat/pacs/singleton/RegulaFalsi.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/RegulaFalsi.h
 Secant.h
-/cygdrive/d/ingmat/pacs/singleton/Secant.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/Secant.h
 BrentSearch.h
-/cygdrive/d/ingmat/pacs/singleton/BrentSearch.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/BrentSearch.h
+QuasiNewton.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/QuasiNewton.h
 
-/cygdrive/d/ingmat/pacs/singleton/TypeTraits.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/TypeTraits.h
 extendedAssert.hpp
-/cygdrive/d/ingmat/pacs/singleton/extendedAssert.hpp
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/extendedAssert.hpp
 
-/cygdrive/d/ingmat/pacs/singleton/extendedAssert.hpp
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/extendedAssert.hpp
 cstdlib
 -
 iostream
 -
 
-/cygdrive/d/ingmat/pacs/singleton/main.cpp
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/main.cpp
 iostream
 -
 cmath
 -
 SolverFactory.h
-/cygdrive/d/ingmat/pacs/singleton/SolverFactory.h
+C:/Users/Ema/Documents/MEGA/POLIMI/MAGISTRALE/PACS/CLionProjects/challenge2/singleton_bracket_interval/SolverFactory.h
 
