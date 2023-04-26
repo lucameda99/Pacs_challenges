@@ -1,7 +1,3 @@
-//
-// Created by Ema on 13/04/2023.
-//
-
 #ifndef CHALLENGE2_UPDATE_SOLVERFACTORY_H
 #define CHALLENGE2_UPDATE_SOLVERFACTORY_H
 
@@ -17,10 +13,16 @@
 #include <exception>
 #include "RegulaFalsi.h"
 #include "Secant.h"
-// #include "BracketInterval.h"
 #include "BrentSearch.h"
 #include "QuasiNewton.h"
 
+/*!
+* * SolverFactory class. It is a Singleton class that allows to add new solvers.
+*
+ * @param name: name of the solver
+ * @param args: arguments of the solver
+ * @return: a unique pointer to the solver
+*/
 using ID = TypeTraits::ID;
 using ScalarFunction = TypeTraits::ScalarFunction;
 using Real = TypeTraits::Real;
