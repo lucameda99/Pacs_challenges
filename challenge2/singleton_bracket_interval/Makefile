@@ -6,7 +6,7 @@ EXEC = Solvers
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 # HEADERS = newton.hpp ODEsolver.hpp
-HEADERS = Bisection.h Secant.h Regulafalsi.h extendedAssert.hpp SolverFactory.h TypeTraits.h BrentSearch.h BaseSolver.h basicZeroFun.hpp QuasiNewton.h Newton.h
+HEADERS = Bisection.h Secant.h Regulafalsi.h extendedAssert.hpp SolverFactory.h TypeTraits.h BrentSearch.h BaseSolver.h QuasiNewton.h Newton.h
 
 .PHONY: all clean #"all" and "clean" are not filenames
 
