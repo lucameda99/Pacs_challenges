@@ -1,23 +1,34 @@
-CXX = g++
-CXXFLAGS = -std=c++20 -O3 -Wall -I. # -I./include
+CXX      ?= g++
+CXXFLAGS ?= -std=c++20
+CPPFLAGS ?= -O3 -Wall -I. -Wno-conversion-null -Wno-deprecated-declarations
 
-EXEC = Solvers
+EXEC     = main
+LDFLAGS ?= 
+LDLIBS  ?= 
 
-SRCS = main.cpp
-OBJS = $(SRCS:.cpp=.o)
-# HEADERS = newton.hpp ODEsolver.hpp
-HEADERS = Bisection.h Secant.h Regulafalsi.h extendedAssert.hpp SolverFactory.h TypeTraits.h BrentSearch.h BaseSolver.h QuasiNewton.h Newton.h
+# Flags for the muParser example.
+CPPFLAG_MUPARSER ?= -I../../../../Examples/include
+EXEC_MUPARSER     = main
+LDFLAGS_MUPARSER ?= -L../../../../Examples/lib -Wl,-rpath=../../../../Examples/lib
+LIB_MUPARSER     ?= -lmuparser
 
-.PHONY: all clean #"all" and "clean" are not filenames
+HEADERS = Bisection.h Secant.h RegulaFalsi.h extendedAssert.hpp SolverFactory.h TypeTraits.h BrentSearch.h BaseSolver.h QuasiNewton.h Newton.h
 
-all: $(EXEC)
-
-$(EXEC): $(OBJS)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+all: $(EXEC) $(EXEC_MUPARSER)	# controlla aggiornamenti su tutti gli eseguibili (main.... e main_getpot_muparser)
 
 %.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) -c $(CPPFLAGS) $(CXXFLAGS) $<
 
+$(EXEC_MUPARSER).o: %.o: %.cpp $(HEADERS) muparser_fun.hpp
+	$(CXX) -c $(CPPFLAGS) $(CPPFLAG_MUPARSER) $(CXXFLAGS) $<
+
+$(EXEC): %: %.o
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $< $(LIBS) -o $@
+
+$(EXEC_MUPARSER): %: %.o
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(LDFLAGS_MUPARSER) $< $(LIBS) $(LIB_MUPARSER) -o $@
 
 clean:
-	$(RM) $(OBJS) $(EXEC)
+	$(RM) *.o
+	$(RM) $(EXEC) $(EXEC_MUPARSER)
+	$(RM) *~
