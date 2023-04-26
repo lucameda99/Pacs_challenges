@@ -7,9 +7,9 @@ LDFLAGS ?=
 LDLIBS  ?= 
 
 # Flags for the muParser example.
-CPPFLAG_MUPARSER ?= -I../../../../Examples/include
+CPPFLAG_MUPARSER ?= -I../getpot_muparser/include
 EXEC_MUPARSER     = main
-LDFLAGS_MUPARSER ?= -L../../../../Examples/lib -Wl,-rpath=../../../../Examples/lib
+LDFLAGS_MUPARSER ?= -L../getpot_muparser/lib -Wl,-rpath=../getpot_muparser/lib
 LIB_MUPARSER     ?= -lmuparser
 
 HEADERS = Bisection.h Secant.h RegulaFalsi.h extendedAssert.hpp SolverFactory.h TypeTraits.h BrentSearch.h BaseSolver.h QuasiNewton.h Newton.h
