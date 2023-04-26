@@ -14,6 +14,7 @@
 
 #include "Bisection.h"
 #include "Newton.h"
+#include <exception>
 #include "RegulaFalsi.h"
 #include "Secant.h"
 // #include "BracketInterval.h"
@@ -45,8 +46,8 @@ public:
     std::unique_ptr<BaseSolver> selectSolver(const ID& name) const {
         auto it = m_solvers.find(name);
         if (it == m_solvers.end()) {
-            // todo: raise warning here !?
-            std::cout << "\n\t Solver " << name << " doesn't exist" << std::endl;
+            throw std::logic_error ("This solver doesn't exist");
+            //std::cout << "\n\t Solver " << name << " doesn't exist" << std::endl;
             return nullptr;
         }
         return it->second();
