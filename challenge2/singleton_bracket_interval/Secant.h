@@ -1,12 +1,18 @@
-//
-// Created by Ema on 19/04/2023.
-//
-
 #ifndef CHALLENGE2_UPDATE_SECANT_H
 #define CHALLENGE2_UPDATE_SECANT_H
 
 #include "BaseSolver.h"
 #include "TypeTraits.h"
+
+/*!
+* * Secant method solver: solves the non-linear function f(x) = 0 using the Secant method
+*
+ * @param a: left end of the interval
+ * @param b: right end of the interval
+ * @param tol: tolerance on the function value
+ * @param tola: tolerance on the interval
+ * @param maxIt: maximum number of iterations
+*/
 
 using ResultType = TypeTraits::ResultType;  //make the syntax lighter
 using Real = TypeTraits::Real;

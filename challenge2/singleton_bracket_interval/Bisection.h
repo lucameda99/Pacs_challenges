@@ -1,12 +1,16 @@
-//
-// Created by Ema on 13/04/2023.
-//
-
 #ifndef CHALLENGE2_UPDATE_BISECTION_H
 #define CHALLENGE2_UPDATE_BISECTION_H
 
 #include "BaseSolver.h"
 #include "TypeTraits.h"
+
+/*!
+* Bisection method solver: solves the nonlinear function f(x) = 0 using the bisection method
+*
+* @param m_a First end of initial interval
+* @param m_b Second end of initial interval
+* @param m_tol Tolerance
+*/
 
 using ResultType = TypeTraits::ResultType;  //make the syntax lighter
 using Real = TypeTraits::Real;

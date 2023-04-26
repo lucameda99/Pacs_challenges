@@ -1,12 +1,18 @@
-//
-// Created by Ema on 16/04/2023.
-//
-
 #ifndef CHALLENGE2_UPDATE_NEWTON_H
 #define CHALLENGE2_UPDATE_NEWTON_H
 
 #include "BaseSolver.h"
 #include "TypeTraits.h"
+
+/*!
+* * Newton method solver: solves the non-linear function f(x) = 0 using the Newton method
+*
+ * @param m_a First end of initial interval
+ * @param m_tol Tolerance
+ * @param m_tola Absolute tolerance
+ * @param m_maxIt Maximum number of iterations
+ * @param m_df Derivative of the function
+*/
 
 using ResultType = TypeTraits::ResultType;  //make the syntax lighter
 using Real = TypeTraits::Real;

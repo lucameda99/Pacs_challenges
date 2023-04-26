@@ -1,11 +1,15 @@
-//
-// Created by Ema on 13/04/2023.
-//
-
 #ifndef CHALLENGE2_UPDATE_BASESOLVER_H
 #define CHALLENGE2_UPDATE_BASESOLVER_H
 
 #include "TypeTraits.h"
+
+/*!
+* Base class from which all the solvers will be derived.
+*
+* @tparam m_f Function that has to be solved
+* @param f The function
+* @param a First end of initial interval
+*/
 
 using ResultType = TypeTraits::ResultType;
 using ScalarFunction = TypeTraits::ScalarFunction;

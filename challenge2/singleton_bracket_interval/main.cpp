@@ -1,8 +1,14 @@
-
 #include <iostream>
 #include <cmath>
 
 #include "SolverFactory.h"
+
+/*!
+* Example usage of the SolverFactory class. The additional function
+* bracketInterval may be used to set up the initial interval.
+*
+* @function bracketInterval: finds a suitable initial interval [a,b]
+*/
 
 std::tuple<Real, Real, bool>
 bracketInterval(TypeTraits::ScalarFunction const &f, Real x1, Real h = 0.01,
@@ -12,11 +18,10 @@ int main() {
 
     TypeTraits::ScalarFunction F = [] (double x){return 0.5 - exp(M_PI*x); };
     TypeTraits::ScalarFunction dF = [] (double x){return -M_PI*exp(M_PI*x); };
+
     //exact result:
     Real root = 1/M_PI* log(0.5);
     std::cout << "\n\t Exact result = " << root << std::endl;
-
-
 
     // Instantiating SolverFactory
     auto & factory = SolverFactory::Instance();
@@ -75,13 +80,11 @@ int main() {
     result = solver->solve();
     std::cout << "\n\t quasinewton: "<< std::get<0>(result) << ", converged: " << std::get<1>(result) << std::endl;
 
-
     // selecting a non-existent solver
     solver = factory.selectSolver("bisection_method");
     if (!solver) {return 0;}
     solver->solve(); // solving with bisection_method
 
-    std::cout << "Hello, World!" << std::endl;
     return 0;
 }
 

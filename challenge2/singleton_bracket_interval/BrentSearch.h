@@ -9,6 +9,15 @@
 #include "BaseSolver.h"
 #include "TypeTraits.h"
 
+/*!
+* * BrentSearch method solver: solves the non-linear function f(x) = 0 using the Brent Search method
+*
+* @param m_a First end of initial interval
+ * @param m_b Second end of initial interval
+ * @param m_tol Tolerance
+ * @param m_maxIt Maximum number of iterations
+*/
+
 using ResultType = TypeTraits::ResultType;  //make the syntax lighter
 using Real = TypeTraits::Real;
 using ScalarFunction = TypeTraits::ScalarFunction;
