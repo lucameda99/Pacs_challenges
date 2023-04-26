@@ -1,6 +1,10 @@
 #include <iostream>
 #include <cmath>
 
+#include "SolverFactory.h"
+#include <GetPot>
+#include "muparser_fun.hpp"
+
 /*!
 * Example usage of the SolverFactory class. The additional function
 * bracketInterval may be used to set up the initial interval.
@@ -14,8 +18,14 @@ bracketInterval(TypeTraits::ScalarFunction const &f, Real x1, Real h = 0.01,
 
 int main() {
 
-    TypeTraits::ScalarFunction F = [] (double x){return 0.5 - exp(M_PI*x); };
-    TypeTraits::ScalarFunction dF = [] (double x){return -M_PI*exp(M_PI*x); };
+    // read functions from file
+    GetPot datafile("data.txt");
+    const std::string f_str = datafile("f", "0");
+    const std::string df_str = datafile("df", "0");
+    MuparserFun F(f_str), dF(df_str);
+
+    // TypeTraits::ScalarFunction F = [] (double x){return 0.5 - exp(M_PI*x); };
+    // TypeTraits::ScalarFunction dF = [] (double x){return -M_PI*exp(M_PI*x); };
 
     //exact result:
     Real root = 1/M_PI* log(0.5);
