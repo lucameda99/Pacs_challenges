@@ -48,7 +48,7 @@ ResultType QuasiNewton::solve() const {
     iterType 	iter{0u};
     Real 		check = m_tol * resid + m_tola;
     bool 		goOn = resid > check;
-    Real 		sol = std::numeric_limits<Real>::has_quiet_NaN;
+    //Real 		sol = std::numeric_limits<Real>::has_quiet_NaN;
     Real 		h = std::abs((b - a) / 100.);
     Real		df;
 
