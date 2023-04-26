@@ -1,33 +1,59 @@
-//
-// Created by Ema on 11/04/2023.
-//
-
-#ifndef SOLVER_FACTORY_SINGLETON_BISECTION_H
-#define SOLVER_FACTORY_SINGLETON_BISECTION_H
+#ifndef CHALLENGE2_UPDATE_BISECTION_H
+#define CHALLENGE2_UPDATE_BISECTION_H
 
 #include "BaseSolver.h"
-#include "Traits.h"
+#include "TypeTraits.h"
 
-#include <limits>
-#include <tuple>
+/*!
+* Bisection method solver: solves the nonlinear function f(x) = 0 using the bisection method
+*
+* @param m_a First end of initial interval
+* @param m_b Second end of initial interval
+* @param m_tol Tolerance
+*/
 
-namespace zerosolvers {
+using ResultType = TypeTraits::ResultType;  //make the syntax lighter
+using Real = TypeTraits::Real;
+using ScalarFunction = TypeTraits::ScalarFunction;
 
-    class Bisection final: public BaseSolver {
+class Bisection : public BaseSolver{
+public:
+    Bisection(const ScalarFunction &f, Real a, Real b, Real tol = 1e-5);
+    [[nodiscard]] ResultType solve() const override;
+private:
+    Real m_a, m_b, m_tol;
+};
 
-    public:
-        Traits::ScalarFunction m_f;
-        Traits::scalar m_a;
-        Traits::scalar m_b;
-        Traits::scalar m_tol;
+Bisection::Bisection(const ScalarFunction &f, Real a, Real b, Real tol) : BaseSolver(f), m_a(a), m_b(b), m_tol(tol) {}
 
+ResultType Bisection::solve() const {
 
-        Bisection(Traits::ScalarFunction &f,Traits::scalar a,Traits::scalar b,Traits::scalar tol);
+    Real a = m_a;
+    Real b = m_b;
 
-        Traits::ReturnType solve() override;
+    Real ya = m_f(a);
+    Real yb = m_f(b);
 
-
-    };
-
+    Real delta = b - a;
+    SURE_ASSERT(ya * yb < 0, "Function must change sign at the two end values");
+    Real yc{ya};
+    Real c{a};
+    while(std::abs(delta) > 2 * m_tol)
+    {
+        c = (a + b) / 2.;
+        yc = m_f(c);
+        if(yc * ya < 0.0)
+        {
+            yb = yc;
+            b = c;
+        }
+        else
+        {
+            ya = yc;
+            a = c;
+        }
+        delta = b - a;
+    }
+    return std::make_tuple((a + b)/2., true);
 }
-#endif //SOLVER_FACTORY_SINGLETON_BISECTION_H
+#endif //CHALLENGE2_UPDATE_BISECTION_H

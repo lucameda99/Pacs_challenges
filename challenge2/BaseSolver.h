@@ -1,24 +1,28 @@
-//
-// Created by Ema on 11/04/2023.
-//
+#ifndef CHALLENGE2_UPDATE_BASESOLVER_H
+#define CHALLENGE2_UPDATE_BASESOLVER_H
 
-#ifndef SOLVER_FACTORY_SINGLETON_BASESOLVER_H
-#define SOLVER_FACTORY_SINGLETON_BASESOLVER_H
-#include <iostream>
+#include "TypeTraits.h"
 
-#include "Traits.h"
-namespace zerosolvers {
+/*!
+* Base class from which all the solvers will be derived.
+*
+* @tparam m_f Function that has to be solved
+* @param f The function
+* @param a First end of initial interval
+*/
 
-    class BaseSolver {
+using ResultType = TypeTraits::ResultType;
+using ScalarFunction = TypeTraits::ScalarFunction;
 
+class BaseSolver {
+    protected:
+        ScalarFunction m_f;
 
     public:
-        BaseSolver() = default;
-
+        BaseSolver(const ScalarFunction &f);
         virtual ~BaseSolver() {}
+        virtual ResultType solve() const = 0;
+};
 
-        virtual Traits::ReturnType solve() = 0;
-    };
-}
-
-#endif //SOLVER_FACTORY_SINGLETON_BASESOLVER_H
+BaseSolver::BaseSolver(const ScalarFunction &f) : m_f(f) {}
+#endif //CHALLENGE2_UPDATE_BASESOLVER_H

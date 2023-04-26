@@ -1,9 +1,7 @@
-cmake_minimum_required(VERSION 3.13)  # CMake version check
-project(challenge_2)               # Create project "simple_example"
-set(CMAKE_CXX_STANDARD 20)            # Enable c++14 standard
+cmake_minimum_required(VERSION 3.20)
+project(challenge2_update)
 
-# Add main.cpp file of project root directory as source file
-set(SOURCE_FILES main.cpp Bisection.cpp Secant.cpp Regulafalsi.cpp)
+set(CMAKE_CXX_STANDARD 20)
 
-# Add executable target with source files listed in SOURCE_FILES variable
-add_executable(simple_example ${SOURCE_FILES})
+add_executable(challenge2_update main.cpp BaseSolver.h TypeTraits.h Bisection.h SolverFactory.h Newton.h RegulaFalsi.h
+        extendedAssert.hpp Secant.h BrentSearch.h)
