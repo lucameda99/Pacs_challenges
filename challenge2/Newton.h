@@ -25,7 +25,7 @@ public:
            Real tol = 1e-5, Real tola = 1e-10, iterType maxIt = 150);
     [[nodiscard]] ResultType solve() const override;
 private:
-    const ScalarFunction& m_df;
+    const ScalarFunction m_df;
     Real m_a, m_tol, m_tola;
     iterType m_maxIt;
 };
@@ -56,7 +56,6 @@ ResultType Newton::solve() const {
         resid = std::abs(ya);
         goOn = resid > check;
     }
-
     return std::make_tuple(a, (iter < m_maxIt));
 }
 

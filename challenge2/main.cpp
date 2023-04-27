@@ -1,6 +1,10 @@
 #include <iostream>
 #include <cmath>
 
+#include "SolverFactory.h"
+#include <GetPot>
+#include "muparser_fun.hpp"
+
 /*!
 * Example usage of the SolverFactory class. The additional function
 * bracketInterval may be used to set up the initial interval.
@@ -14,8 +18,19 @@ bracketInterval(TypeTraits::ScalarFunction const &f, Real x1, Real h = 0.01,
 
 int main() {
 
+    // read functions from file
+    GetPot datafile("data.txt");
+    const std::string f_str = datafile("f", "0");
+    const std::string df_str = datafile("df", "0");
+    MuparserFun F(f_str), dF(df_str);
+
+    std::cout << "\n\t f(x) = " << f_str << std::endl;
+    std::cout << "\n\t df(x) = " << df_str << std::endl;
+
+/*
     TypeTraits::ScalarFunction F = [] (double x){return 0.5 - exp(M_PI*x); };
     TypeTraits::ScalarFunction dF = [] (double x){return -M_PI*exp(M_PI*x); };
+*/
 
     //exact result:
     Real root = 1/M_PI* log(0.5);
@@ -31,6 +46,8 @@ int main() {
 
     Real a = std::get<0>(interval);
     Real b = std::get<1>(interval);
+
+    std::cout << "\n\t Interval: [" << a << ", " << b << "]" << std::endl;
 
     // adding solvers to factory
     factory.addSolver<Bisection>("bisection", F, a, b);
@@ -51,7 +68,6 @@ int main() {
     // solving with newton method
     solver = factory.selectSolver("newton");
     if (!solver) {return 0;}
-    // todo: raise a proper warning if the factory doesn't return a valid solver
     ResultType result = solver->solve();
     std::cout << "\n\t newton: "<< std::get<0>(result) << ", converged: " << std::get<1>(result) << std::endl;
 
